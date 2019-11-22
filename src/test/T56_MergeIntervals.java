@@ -1,19 +1,47 @@
 package test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class T56_MergeIntervals {
 
 	public static void main(String[] args) {
-		Tools.printArray(merge(new int[][] { { 1, 3 }, { 2, 6 }, { 8, 10 }, { 15, 18 } }));
-		Tools.printArray(merge(new int[][] { { 2, 6 }, { 1, 3 }, { 8, 10 }, { 15, 18 } }));
-		Tools.printArray(merge(new int[][] { { 1, 3 }, { 2, 6 }, { 3, 5 }, { 15, 18 } }));
-		Tools.printArray(merge(new int[][] { { 1, 3 }, { 3, 6 } }));
-		Tools.printArray(merge(new int[][] { { 1, 4 }, { 0, 4 } }));
-		Tools.printArray(merge(new int[][] {}));
+		T56_MergeIntervals t56 = new T56_MergeIntervals();
+		Tools.printArray(t56.merge(new int[][] { { 1, 3 }, { 2, 6 }, { 8, 10 }, { 15, 18 } }));
+		Tools.printArray(t56.merge(new int[][] { { 2, 6 }, { 1, 3 }, { 8, 10 }, { 15, 18 } }));
+		Tools.printArray(t56.merge(new int[][] { { 1, 3 }, { 2, 6 }, { 3, 5 }, { 15, 18 } }));
+		Tools.printArray(t56.merge(new int[][] { { 1, 3 }, { 3, 6 } }));
+		Tools.printArray(t56.merge(new int[][] { { 1, 4 }, { 0, 4 } }));
+		Tools.printArray(t56.merge(new int[][] {}));
 	}
 
-	public static int[][] merge(int[][] intervals) {
+	private class Array2Comparator implements Comparator<int[]> {
+		public int compare(int[] o1, int[] o2) {
+			return o1[0] - o2[0];
+		}
+	}
+
+	public int[][] merge(int[][] intervals) {
+		if (intervals == null || intervals.length <= 1)
+			return intervals;
+		int len = intervals.length;
+		int[][] ans = new int[len][2];
+		int i, k = 0;
+		Arrays.sort(intervals, new Array2Comparator());
+		for (i = 0; i < len; i++) {
+			if (i == 0) {
+				ans[0] = intervals[i];
+			} else {
+				if (ans[k][1] >= intervals[i][0])
+					ans[k][1] = Math.max(ans[k][1], intervals[i][1]);
+				else
+					ans[++k] = intervals[i];
+			}
+		}
+		return Arrays.copyOf(ans, k + 1);
+	}
+
+	public static int[][] merge1(int[][] intervals) {
 		if (intervals == null || intervals.length <= 1)
 			return intervals;
 		int len = intervals.length;
