@@ -31,13 +31,13 @@ public class T33_SearchinRotatedSortedArray {
 			mid = (end + start) / 2;
 			if (nums[mid] == target)
 				return mid;
-			if (nums[end] > nums[mid]) // midÓÒ²àµ¥µ÷µÝÔö    -->> KEYPOINT
-				if (nums[mid] < target && target <= nums[end]) //ÔÚµ¥µ÷µÝÔöÇø¼äÄÚ
+			if (nums[end] > nums[mid]) // midå³ä¾§å•è°ƒé€’å¢ž    -->> KEYPOINT
+				if (nums[mid] < target && target <= nums[end]) //åœ¨å•è°ƒé€’å¢žåŒºé—´å†…
 					start = mid + 1;
 				else
 					end = mid - 1;
-			else { // mid×ó²àµ¥µ÷µÝÔö    -->> KEYPOINT
-				if (nums[start] <= target && target <= nums[mid]) //ÔÚµ¥µ÷µÝÔöÇø¼äÄÚ
+			else { // midå·¦ä¾§å•è°ƒé€’å¢ž    -->> KEYPOINT
+				if (nums[start] <= target && target <= nums[mid]) //åœ¨å•è°ƒé€’å¢žåŒºé—´å†…
 					end = mid - 1;
 				else
 					start = mid + 1;
@@ -100,7 +100,7 @@ public class T33_SearchinRotatedSortedArray {
 	}
 
 	public static int searchErr(int[] nums, int target) {
-		int i = 0;
+		int i;
 		for (i = 0; i < nums.length - 1; i++) {
 			if (nums[i] == target)
 				return i;
