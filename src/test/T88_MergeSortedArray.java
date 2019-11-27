@@ -14,9 +14,9 @@ public class T88_MergeSortedArray {
     }
 
     /**
-     * ¹Ø¼üµãÊÇ´ÓºóÍùÇ°·Å
-     * Ö´ĞĞÓÃÊ± :0 ms, 100.00%
-     * ÄÚ´æÏûºÄ :36 MB, 85.64%
+     * å…³é”®ç‚¹æ˜¯ä»åå¾€å‰æ”¾
+     * æ‰§è¡Œç”¨æ—¶ :0 ms, 100.00%
+     * å†…å­˜æ¶ˆè€— :36 MB, 85.64%
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0)
@@ -31,8 +31,8 @@ public class T88_MergeSortedArray {
     }
 
     /**
-     * Ö´ĞĞÓÃÊ± :0 ms, 100.00%
-     * ÄÚ´æÏûºÄ :36.1 MB, 84.94%
+     * æ‰§è¡Œç”¨æ—¶ :0 ms, 100.00%
+     * å†…å­˜æ¶ˆè€— :36.1 MB, 84.94%
      */
     public void merge1(int[] nums1, int m, int[] nums2, int n) {
         if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0)

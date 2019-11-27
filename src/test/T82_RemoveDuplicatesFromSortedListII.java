@@ -21,8 +21,8 @@ public class T82_RemoveDuplicatesFromSortedListII {
     }
 
     /**
-     * Ö´ÐÐÓÃÊ± :1 ms, 98.69%
-     * ÄÚ´æÏûºÄ :36.4 MB, 65.24%
+     * æ‰§è¡Œç”¨æ—¶ :1 ms, 98.69%
+     * å†…å­˜æ¶ˆè€— :36.4 MB, 65.24%
      */
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null) return null;

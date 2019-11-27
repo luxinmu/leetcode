@@ -28,6 +28,18 @@ public class ListNode {
         return tail;
     }
 
+    public static ListNode create(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return new ListNode();
+        ListNode head = new ListNode(nums[0]);
+        ListNode head0 = head;
+        for (int i = 1; i < nums.length; i++) {
+            head.next = new ListNode(nums[i]);
+            head = head.next;
+        }
+        return head0;
+    }
+
     public static void print(ListNode head) {
         while (head != null) {
             System.out.print(head.val + (head.next != null ? "->" : ""));
