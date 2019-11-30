@@ -25,25 +25,34 @@ public class T94_BinaryTreeInorderTraversal {
         T94_BinaryTreeInorderTraversal t94 = new T94_BinaryTreeInorderTraversal();
         TreeNode tree1 = TreeNode.plantTree(new Integer[]{1, null, 2, 3});
         TreeNode.show(tree1);
-        System.out.println(t94.preorderTraversal(tree1));  //[1, 2, 3]
-        System.out.println(t94.inorderTraversal(tree1));  //[1, 3, 2]
-        System.out.println(t94.postorderTraversal(tree1));  //[1, 3, 2]
+        System.out.println(t94.preorderTraversal(tree1));   //[1, 2, 3]
+        System.out.println(t94.inorderTraversal(tree1));    //[1, 3, 2]
+        System.out.println(t94.postorderTraversal(tree1));  //[3, 2, 1]
 
         System.out.println(t94.preorderTraversalRecursion(tree1));  //[1, 2, 3]
-        System.out.println(t94.inorderTraversalRecursion(tree1));  //[1, 3, 2]
-        System.out.println(t94.postorderTraversalRecursion(tree1));  //[3, 2, 1]
-
-        TreeNode tree2 = TreeNode.plantTree(new Integer[]{1, 2, 3});
+        System.out.println(t94.inorderTraversalRecursion(tree1));   //[1, 3, 2]
+        System.out.println(t94.postorderTraversalRecursion(tree1)); //[3, 2, 1]
+        //        1
+        //      /   \
+        //     2      3
+        //   /  \      \
+        //  4    5      6
+        TreeNode tree2 = TreeNode.plantTree(new Integer[]{1, 2, 3, 4, 5, null, 6});
         TreeNode.show(tree2);
-        System.out.println(t94.inorderTraversal(tree2)); //[2, 1, 3]
+        System.out.println(t94.preorderTraversal(tree2));   //[1, 2, 4, 5, 3, 6]
+        System.out.println(t94.inorderTraversal(tree2));    //[4, 2, 5, 1, 3, 6]
+        System.out.println(t94.postorderTraversal(tree2));  //[4, 5, 2, 6, 3, 1]
     }
 
+    /**
+     * 前序遍历迭代法
+     */
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> ans = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
-                ans.add(root.val);
+                ans.add(root.val);  //KEYPOINT
                 stack.push(root);
                 root = root.left;
             }
@@ -54,7 +63,7 @@ public class T94_BinaryTreeInorderTraversal {
     }
 
     /**
-     * 迭代法优化
+     * 中序遍历迭代法
      * 执行用时 :1 ms, 86.27%
      * 内存消耗 :34.7 MB, 39.40%
      */
@@ -73,22 +82,22 @@ public class T94_BinaryTreeInorderTraversal {
         return ans;
     }
 
+    /**
+     * 后序遍历迭代法
+     * 前序遍历为 root->left->right，后序遍历为 left->right->root。
+     * 可以修改前序遍历成为 root->right->left，然后倒序就是left->right->root。
+     */
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> ans = new LinkedList<>();
+        LinkedList<Integer> ans = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
+                ans.addFirst(root.val);  //KEYPOINT 倒序插入
                 stack.push(root);
-                if (root.right != null)
-                    stack.push(root.right);
-                root = root.left;
+                root = root.right;
             }
-            while (!stack.isEmpty()) {
-                root = stack.pop();
-                if (root.left != null || root.right != null)
-                    break;
-                ans.add(root.val);
-            }
+            root = stack.pop();
+            root = root.left;
         }
         return ans;
     }
