@@ -2,6 +2,7 @@ package test;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 /*
@@ -42,6 +43,7 @@ public class T94_BinaryTreeInorderTraversal {
         System.out.println(t94.preorderTraversal(tree2));   //[1, 2, 4, 5, 3, 6]
         System.out.println(t94.inorderTraversal(tree2));    //[4, 2, 5, 1, 3, 6]
         System.out.println(t94.postorderTraversal(tree2));  //[4, 5, 2, 6, 3, 1]
+        System.out.println(t94.levelOrder1(tree2));  //[4, 5, 2, 6, 3, 1]
     }
 
     /**
@@ -98,6 +100,47 @@ public class T94_BinaryTreeInorderTraversal {
             }
             root = stack.pop();
             root = root.left;
+        }
+        return ans;
+    }
+
+    public List<Integer> levelOrder(TreeNode root) {
+        if (root == null) return null;
+        List<Integer> ans = new LinkedList<>();
+        TreeNode td;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            td = queue.poll();
+            ans.add(td.val);
+            if (td.left != null) queue.add(td.left);
+            if (td.right != null) queue.add(td.right);
+        }
+        return ans;
+    }
+
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        if (root == null)
+            return new LinkedList<>();
+        List<List<Integer>> ans = new LinkedList<>();
+        List<Integer> integerList = new LinkedList<>();
+        TreeNode cur;
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue0 = new LinkedList<>();
+        queue.add(root);
+        while (true) {
+            if (queue.isEmpty()) {
+                ans.add(integerList);
+                if (queue0.isEmpty()) break;
+                while (!queue0.isEmpty())
+                    queue.offer(queue0.poll());
+                integerList = new LinkedList<>();
+            } else {
+                cur = queue.poll();
+                integerList.add(cur.val);
+                if (cur.left != null) queue0.add(cur.left);
+                if (cur.right != null) queue0.add(cur.right);
+            }
         }
         return ans;
     }
