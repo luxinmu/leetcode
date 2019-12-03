@@ -43,7 +43,7 @@ public class T94_BinaryTreeInorderTraversal {
         System.out.println(t94.preorderTraversal(tree2));   //[1, 2, 4, 5, 3, 6]
         System.out.println(t94.inorderTraversal(tree2));    //[4, 2, 5, 1, 3, 6]
         System.out.println(t94.postorderTraversal(tree2));  //[4, 5, 2, 6, 3, 1]
-        System.out.println(t94.levelOrder1(tree2));  //[4, 5, 2, 6, 3, 1]
+        System.out.println(t94.levelOrder1(tree2));         //[1, 2, 3, 4, 5, 6]
     }
 
     /**
