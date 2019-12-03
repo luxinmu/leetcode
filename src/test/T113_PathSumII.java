@@ -40,8 +40,8 @@ public class T113_PathSumII {
     }
 
     /**
-     * Ö´ĞĞÓÃÊ± :20 ms, 5.10%
-     * ÄÚ´æÏûºÄ :53.6 MB, 5.06%
+     * æ‰§è¡Œç”¨æ—¶ :20 ms, 5.10%
+     * å†…å­˜æ¶ˆè€— :53.6 MB, 5.06%
      */
     private void helper(TreeNode root, int sum, LinkedList<Integer> tmp, List<List<Integer>> ans) {
         if (root == null)
@@ -56,9 +56,9 @@ public class T113_PathSumII {
     }
 
     /**
-     * ÓÅ»¯ 1
-     * Ö´ĞĞÓÃÊ± :5 ms, 15.94%
-     * ÄÚ´æÏûºÄ :38.9 MB, 60.53%
+     * ä¼˜åŒ– 1
+     * æ‰§è¡Œç”¨æ—¶ :5 ms, 15.94%
+     * å†…å­˜æ¶ˆè€— :38.9 MB, 60.53%
      */
     private void helper1(TreeNode root, int sum, LinkedList<Integer> tmp, List<List<Integer>> ans) {
         if (root == null)
@@ -73,9 +73,9 @@ public class T113_PathSumII {
     }
 
     /**
-     * ÓÅ»¯ 2 ÀûÓÃÇ°Ğò±éÀúµÄË¼Ïë
-     * Ö´ĞĞÓÃÊ± :2 ms, 83.04%
-     * ÄÚ´æÏûºÄ :37.7 MB, 80.82%
+     * ä¼˜åŒ– 2 åˆ©ç”¨å‰åºéå†çš„æ€æƒ³
+     * æ‰§è¡Œç”¨æ—¶ :2 ms, 83.04%
+     * å†…å­˜æ¶ˆè€— :37.7 MB, 80.82%
      */
     private void helper2(TreeNode root, int sum, LinkedList<Integer> tmp, List<List<Integer>> ans) {
         if (root == null)

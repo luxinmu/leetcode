@@ -32,12 +32,12 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
     }
 
     /**
-     * ÓÅ»¯ 2
-     * Ìá¸ßÔËĞĞĞ§ÂÊÁ½µã£º
-     * 1¡¢ÀûÓÃmap´æ·Å¸ù½ÚµãÔÚinorderÖĞµÄË÷Òı£¬Ëõ¶Ì²éÕÒÊ±¼ä£»
-     * 2¡¢µİ¹éÊ±£¬²»Éú³ÉĞÂÊı×é£¬Ö»´«µİpreorder¡¢inorderµÄ¿ªÊ¼Ë÷ÒıºÍÊı×é³¤¶È¡£
-     * Ö´ĞĞÓÃÊ± :3 ms, 96.20%
-     * ÄÚ´æÏûºÄ :36.1 MB, 98.06%
+     * ä¼˜åŒ– 2
+     * æé«˜è¿è¡Œæ•ˆç‡ä¸¤ç‚¹ï¼š
+     * 1ã€åˆ©ç”¨mapå­˜æ”¾æ ¹èŠ‚ç‚¹åœ¨inorderä¸­çš„ç´¢å¼•ï¼Œç¼©çŸ­æŸ¥æ‰¾æ—¶é—´ï¼›
+     * 2ã€é€’å½’æ—¶ï¼Œä¸ç”Ÿæˆæ–°æ•°ç»„ï¼Œåªä¼ é€’preorderã€inorderçš„å¼€å§‹ç´¢å¼•å’Œæ•°ç»„é•¿åº¦ã€‚
+     * æ‰§è¡Œç”¨æ—¶ :3 ms, 96.20%
+     * å†…å­˜æ¶ˆè€— :36.1 MB, 98.06%
      */
     Map<Integer, Integer> map;
     int[] preorder;
@@ -45,7 +45,7 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
     public TreeNode buildTree2(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0)
             return null;
-        this.map = new HashMap<>();  //¶¨Òåmap´æ·ÅinorderË÷Òı, ¼õÉÙ²éÕÒ¸ù½ÚµãÔÚinorderË÷ÒıµÄÊ±¼ä¡£
+        this.map = new HashMap<>();  //å®šä¹‰mapå­˜æ”¾inorderç´¢å¼•, å‡å°‘æŸ¥æ‰¾æ ¹èŠ‚ç‚¹åœ¨inorderç´¢å¼•çš„æ—¶é—´ã€‚
         for (int i = 0; i < inorder.length; i++)
             map.put(inorder[i], i);
         this.preorder = preorder;
@@ -59,7 +59,7 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
         if (length == 1)
             return root;
         int rootIdx = map.get(preorder[pFrom]);
-        // ·Ö×óÓÒÁ½¸ö·ÖÖ§, µİ¹é´¦Àí
+        // åˆ†å·¦å³ä¸¤ä¸ªåˆ†æ”¯, é€’å½’å¤„ç†
         int len1 = rootIdx - iFrom;
         int len2 = length - len1 - 1;
         root.left = helper1(pFrom + 1, iFrom, len1);
@@ -68,17 +68,17 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
     }
 
     /**
-     * ÓÅ»¯ 1
-     * Ìá¸ßÔËĞĞĞ§ÂÊÁ½µã£º
-     * 1¡¢ÀûÓÃmap´æ·Å¸ù½ÚµãÔÚinorderÖĞµÄË÷Òı£¬Ëõ¶Ì²éÕÒÊ±¼ä£»
-     * 2¡¢µİ¹éÊ±£¬²»Éú³ÉĞÂÊı×é£¬Ö»´«µİpreorder¡¢inorderµÄ¿ªÊ¼Ë÷ÒıºÍÊı×é³¤¶È¡£
-     * Ö´ĞĞÓÃÊ± :3 ms, 96.20%
-     * ÄÚ´æÏûºÄ :36.4 MB, 92.01%
+     * ä¼˜åŒ– 1
+     * æé«˜è¿è¡Œæ•ˆç‡ä¸¤ç‚¹ï¼š
+     * 1ã€åˆ©ç”¨mapå­˜æ”¾æ ¹èŠ‚ç‚¹åœ¨inorderä¸­çš„ç´¢å¼•ï¼Œç¼©çŸ­æŸ¥æ‰¾æ—¶é—´ï¼›
+     * 2ã€é€’å½’æ—¶ï¼Œä¸ç”Ÿæˆæ–°æ•°ç»„ï¼Œåªä¼ é€’preorderã€inorderçš„å¼€å§‹ç´¢å¼•å’Œæ•°ç»„é•¿åº¦ã€‚
+     * æ‰§è¡Œç”¨æ—¶ :3 ms, 96.20%
+     * å†…å­˜æ¶ˆè€— :36.4 MB, 92.01%
      */
     public TreeNode buildTree1(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0)
             return null;
-        Map<Integer, Integer> map = new HashMap<>();  //¶¨Òåmap´æ·ÅinorderË÷Òı, ¼õÉÙ²éÕÒ¸ù½ÚµãÔÚinorderË÷ÒıµÄÊ±¼ä¡£
+        Map<Integer, Integer> map = new HashMap<>();  //å®šä¹‰mapå­˜æ”¾inorderç´¢å¼•, å‡å°‘æŸ¥æ‰¾æ ¹èŠ‚ç‚¹åœ¨inorderç´¢å¼•çš„æ—¶é—´ã€‚
         for (int i = 0; i < inorder.length; i++)
             map.put(inorder[i], i);
         return helper(preorder, 0, inorder, 0, preorder.length, map);
@@ -91,7 +91,7 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
         if (length == 1)
             return root;
         int rootIdx = map.get(preorder[pFrom]);
-        // ·Ö×óÓÒÁ½¸ö·ÖÖ§, µİ¹é´¦Àí
+        // åˆ†å·¦å³ä¸¤ä¸ªåˆ†æ”¯, é€’å½’å¤„ç†
         int len1 = rootIdx - iFrom;
         int len2 = length - len1 - 1;
         root.left = helper(preorder, pFrom + 1, inorder, iFrom, len1, map);
@@ -100,8 +100,8 @@ public class T105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
     }
 
     /**
-     * Ö´ĞĞÓÃÊ± :18 ms, 32.15%
-     * ÄÚ´æÏûºÄ :82.8 MB, 5.07%
+     * æ‰§è¡Œç”¨æ—¶ :18 ms, 32.15%
+     * å†…å­˜æ¶ˆè€— :82.8 MB, 5.07%
      */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length == 0 || inorder.length == 0)

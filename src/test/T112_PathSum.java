@@ -29,8 +29,8 @@ public class T112_PathSum {
     }
 
     /**
-     * Ö´ÐÐÓÃÊ± :0 ms, 100.00%
-     * ÄÚ´æÏûºÄ :39 MB, 25.57%
+     * æ‰§è¡Œç”¨æ—¶ :0 ms, 100.00%
+     * å†…å­˜æ¶ˆè€— :39 MB, 25.57%
      */
     public boolean hasPathSum(TreeNode root, int sum) {
         if (root == null) return false;
@@ -41,8 +41,8 @@ public class T112_PathSum {
     }
 
     /**
-     * Ö´ÐÐÓÃÊ± :0 ms, 100.00%
-     * ÄÚ´æÏûºÄ :39.3 MB, 21.56%
+     * æ‰§è¡Œç”¨æ—¶ :0 ms, 100.00%
+     * å†…å­˜æ¶ˆè€— :39.3 MB, 21.56%
      */
     public boolean hasPathSum1(TreeNode root, int sum) {
         return has(root, sum, 0);
