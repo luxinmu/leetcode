@@ -37,9 +37,9 @@ public class T103_BinaryTreeZigzagLevelOrderTraversal {
         System.out.println(t103.zigzagLevelOrder1(tree2));
     }
 
-    /** ÓÅ»¯: Ê¹ÓÃÒ»¸ö¶ÓÁĞÍê³É¡£
-     * Ö´ĞĞÓÃÊ± :1 ms, 99.52%
-     * ÄÚ´æÏûºÄ :36.2 MB, 40.11%
+    /** ä¼˜åŒ–: ä½¿ç”¨ä¸€ä¸ªé˜Ÿåˆ—å®Œæˆã€‚
+     * æ‰§è¡Œç”¨æ—¶ :1 ms, 99.52%
+     * å†…å­˜æ¶ˆè€— :36.2 MB, 40.11%
      */
     public List<List<Integer>> zigzagLevelOrder1(TreeNode root) {
         List<List<Integer>> ans = new LinkedList<>();
@@ -77,8 +77,8 @@ public class T103_BinaryTreeZigzagLevelOrderTraversal {
     }
 
     /**
-     * Ö´ĞĞÓÃÊ± :1 ms, 99.52%
-     * ÄÚ´æÏûºÄ :36.2 MB, 40.11%
+     * æ‰§è¡Œç”¨æ—¶ :1 ms, 99.52%
+     * å†…å­˜æ¶ˆè€— :36.2 MB, 40.11%
      */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans = new LinkedList<>();
