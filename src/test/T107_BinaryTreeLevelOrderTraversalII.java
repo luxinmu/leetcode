@@ -31,10 +31,45 @@ public class T107_BinaryTreeLevelOrderTraversalII {
     }
 
     /**
+     * 使用头插法优化
+     * 执行用时 :1 ms, 100.00%
+     * 内存消耗 :36.5 MB, 14.67%
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        LinkedList<List<Integer>> ans = new LinkedList<>();
+        if (root == null) return ans;
+        List<Integer> ans0 = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        TreeNode cur;
+        int curLvNum = 1;
+        int nextLvNum = 0;
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            ans0.add(cur.val);
+            if (cur.left != null) {
+                queue.offer(cur.left);
+                nextLvNum++;
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+                nextLvNum++;
+            }
+            if (--curLvNum == 0) {
+                ans.addFirst(ans0);
+                ans0 = new LinkedList<>();
+                curLvNum = nextLvNum;
+                nextLvNum = 0;
+            }
+        }
+        return ans;
+    }
+
+    /**
      * 执行用时 :2 ms, 59.34%
      * 内存消耗 :36.4 MB, 40.97%
      */
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    public List<List<Integer>> levelOrderBottom1(TreeNode root) {
         List<List<Integer>> ans = new LinkedList<>();
         if (root == null) return ans;
         List<Integer> ans0 = new LinkedList<>();

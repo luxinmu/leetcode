@@ -19,20 +19,19 @@ public class T61_RotateList {
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null || head.next == null)
             return head;
-        int count = 0;
+        int count = 1;  //链表节点数
         ListNode tail = head;
         while (tail.next != null) {
             count++;
             tail = tail.next;
         }
         tail.next = head;  //KEYPOINT make circle
-        count++;
-        ListNode prevbreak = head;
-        int loop = count - k % count - 1;
+        ListNode prevBreak = head;
+        int loop = count - k % count - 1;  // KEYPOINT
         while (loop-- > 0)
-            prevbreak = prevbreak.next;
-        head = prevbreak.next;  //set new head
-        prevbreak.next = null;  //cut circle
+            prevBreak = prevBreak.next;
+        head = prevBreak.next;  //set new head
+        prevBreak.next = null;  //cut circle
         return head;
     }
 }
