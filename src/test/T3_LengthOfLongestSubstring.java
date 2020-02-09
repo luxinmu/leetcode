@@ -14,6 +14,7 @@ public class T3_LengthOfLongestSubstring {
 		String str3 = "abcde";
 		String str4 = "tmmzuxt";
 		String str5 = "abcbcd";
+        String str6 = " ";
 		for (int i = 0; i < str.length(); i++)
 			System.out.print(str.charAt(i) + " ");
 		System.out.println("\n max length:" + lengthOfLongestSubstring00(str));
@@ -22,6 +23,7 @@ public class T3_LengthOfLongestSubstring {
 		System.out.println("\n max length:" + lengthOfLongestSubstring00(str3));
 		System.out.println("\n max length:" + lengthOfLongestSubstring00(str4));
 		System.out.println("\n max length:" + lengthOfLongestSubstring00(str5));
+        System.out.println("\n max length:" + lengthOfLongestSubstring00(str6));
 	}
 
 	/* sliding window 0 */
