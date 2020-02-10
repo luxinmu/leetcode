@@ -8,10 +8,10 @@ public class T55_JumpGame {
 	}
 
 	/**
-	 * ����˼·:
+     * 解体思路:
 	 * <p>
-	 * 1 ����ȫ��Ϊ���ڵ���1��ֵ, ����ܵ����һ������<br>
-	 * 2 ������Ϊ0��ֵ, ���ж�0ֵ֮ǰ������, �Ƿ�����Խ��0ֵλ�õ���, ��û��, ���ܴﵽ�������
+     * 1 若是全部为大于等于1的值, 则必能到最后一个索引<br>
+     * 2 若是有为0的值, 则判断0值之前的数中, 是否有能越过0值位置的数, 若没有, 则不能达到最后索引
 	 */
 	public static boolean canJump(int[] nums) {
 		if (nums == null || nums.length == 0)
