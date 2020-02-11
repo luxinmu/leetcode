@@ -27,7 +27,7 @@ public class T33_SearchinRotatedSortedArray {
 		int start = 0;
 		int end = nums.length - 1;
 		int mid;
-		while (start <= end) {
+        while (start <= end) { // KEYPOINT
 			mid = (end + start) / 2;
 			if (nums[mid] == target)
 				return mid;
