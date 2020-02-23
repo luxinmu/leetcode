@@ -16,6 +16,8 @@ import java.util.Set;
  * Input: [100, 4, 200, 1, 3, 2]
  * Output: 4
  * Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+ *
+ * @see T300_LongestIncreasingSubsequence
  */
 public class T128_LongestConsecutiveSequence {
     public static void main(String[] args) {
@@ -25,11 +27,11 @@ public class T128_LongestConsecutiveSequence {
     }
 
     /**
-     * HashMap½â·¨
-     * Ö´ĞĞÓÃÊ± :11 ms, 38.00%
-     * ÄÚ´æÏûºÄ :45.6 MB, 5.04%
-     * ±éÀúÊı×é£¬¶ÔÓÚÃ¿Ò»¸ö½Úµã£¬ÓĞÈçÏÂ¹æÂÉ£º
-     * µ±Ç°½ÚµãµÄ×î´óÁ¬ĞøÊı = Ç°Ò»½ÚµãÁ¬ĞøÊı + ºóÒ»½ÚµãÁ¬ĞøÊı + 1
+     * HashMapè§£æ³•
+     * æ‰§è¡Œç”¨æ—¶ :11 ms, 38.00%
+     * å†…å­˜æ¶ˆè€— :45.6 MB, 5.04%
+     * éå†æ•°ç»„ï¼Œå¯¹äºæ¯ä¸€ä¸ªèŠ‚ç‚¹ï¼Œæœ‰å¦‚ä¸‹è§„å¾‹ï¼š
+     * å½“å‰èŠ‚ç‚¹çš„æœ€å¤§è¿ç»­æ•° = å‰ä¸€èŠ‚ç‚¹è¿ç»­æ•° + åä¸€èŠ‚ç‚¹è¿ç»­æ•° + 1
      */
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0)
@@ -46,9 +48,9 @@ public class T128_LongestConsecutiveSequence {
             int cnt = leftCnt + rightCnt + 1;
             max = Math.max(max, cnt);
             map.put(n, cnt);
-            // Èô´æÔÚÇ°ºó½Úµã£¬Ôò¸üĞÂÏàÓ¦µÄ½ÚµãµÄÖµÎªĞÂµÄ×î´óÁ¬ĞøÖµ
-            // ¸üĞÂÊ±£¬¶ÔÓÚÇ°Ğò½Úµã£¬ĞèÒª¸üĞÂ×î×ó²àµÄ½ÚµãµÄ¶ÔÓ¦Öµ
-            // ¶ÔÓÚºóĞò½Úµã£¬ĞèÒª¸üĞÂ×îÓÒ²àµÄ½ÚµãµÄ¶ÔÓ¦Á¬ĞøÊı
+            // è‹¥å­˜åœ¨å‰åèŠ‚ç‚¹ï¼Œåˆ™æ›´æ–°ç›¸åº”çš„èŠ‚ç‚¹çš„å€¼ä¸ºæ–°çš„æœ€å¤§è¿ç»­å€¼
+            // æ›´æ–°æ—¶ï¼Œå¯¹äºå‰åºèŠ‚ç‚¹ï¼Œéœ€è¦æ›´æ–°æœ€å·¦ä¾§çš„èŠ‚ç‚¹çš„å¯¹åº”å€¼
+            // å¯¹äºååºèŠ‚ç‚¹ï¼Œéœ€è¦æ›´æ–°æœ€å³ä¾§çš„èŠ‚ç‚¹çš„å¯¹åº”è¿ç»­æ•°
             if (beforeN) map.put(n - leftCnt, cnt);  // KEYPOINT
             if (afterN) map.put(n + rightCnt, cnt);
         }
@@ -56,10 +58,10 @@ public class T128_LongestConsecutiveSequence {
     }
 
     /**
-     * HashSet½â·¨
-     * Ö´ĞĞÓÃÊ± :11 ms, 38.00%
-     * ÄÚ´æÏûºÄ :37.9 MB, 57.59%
-     * ¿Õ¼ä»»Ê±¼äµÄ½â·¨£¬½«ËùÓĞÊı¾İ·ÅÈëSetÖĞ£¬ÕÒµ½Ã¿Ò»¸öÁ¬ĞøĞòÁĞµÄÍ·£¬Í³¼Æ£¬Çó×î´óÖµ¡£
+     * HashSetè§£æ³•
+     * æ‰§è¡Œç”¨æ—¶ :11 ms, 38.00%
+     * å†…å­˜æ¶ˆè€— :37.9 MB, 57.59%
+     * ç©ºé—´æ¢æ—¶é—´çš„è§£æ³•ï¼Œå°†æ‰€æœ‰æ•°æ®æ”¾å…¥Setä¸­ï¼Œæ‰¾åˆ°æ¯ä¸€ä¸ªè¿ç»­åºåˆ—çš„å¤´ï¼Œç»Ÿè®¡ï¼Œæ±‚æœ€å¤§å€¼ã€‚
      */
     public int longestConsecutive1(int[] nums) {
         if (nums == null || nums.length == 0)
@@ -69,8 +71,8 @@ public class T128_LongestConsecutiveSequence {
             set.add(n);
         int max = 0;
         for (int n : set) {
-            // ÕÒµ½Á¬ĞøĞòÁĞµÄÍ·
-            // µ±²»´æÔÚµ±Ç°Êı×ÖÇ°ÃæµÄÊı×ÖÊ±£¬µ±Ç°Êı×ÖÎªĞòÁĞÍ·
+            // æ‰¾åˆ°è¿ç»­åºåˆ—çš„å¤´
+            // å½“ä¸å­˜åœ¨å½“å‰æ•°å­—å‰é¢çš„æ•°å­—æ—¶ï¼Œå½“å‰æ•°å­—ä¸ºåºåˆ—å¤´
             if (!set.contains(n - 1)) {
                 int cnt = 0;
                 while (set.contains(n++))

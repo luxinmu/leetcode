@@ -75,10 +75,26 @@ public class T120_Triangle {
 
     /**
      * 自底向上法, 最终得到的值即是最小和
+     */
+    public int minimumTotal1(List<List<Integer>> triangle) {
+        if (triangle == null || triangle.size() == 0)
+            return 0;
+        int size = triangle.size();
+        int[][] dp = new int[size + 1][size + 1]; //dp数组定义为+1是避免数组越界
+        for (int i = size - 1; i >= 0; i--)
+            for (int j = 0; j <= i; j++)
+                //dp[i][j]表示i、j这个位置的最小路径和，由当前位置的权重triangle.get(i).get(j)
+                //加上上一层相邻位置最小和的较小值。[i][j]上一层相邻位置为[i+1][j]和[i+1][j+1]。
+                dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle.get(i).get(j);
+        return dp[0][0];
+    }
+
+    /**
+     * 自底向上法优化, 最终得到的值即是最小和
      * 执行用时 : 3 ms ,  87.44%
      * 内存消耗 : 37.4 MB ,  68.33%
      */
-    public int minimumTotal1(List<List<Integer>> triangle) {
+    public int minimumTotal2(List<List<Integer>> triangle) {
         if (triangle == null || triangle.size() == 0) return 0;
         int size = triangle.size();
         int[] dp = new int[size + 1];

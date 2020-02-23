@@ -41,4 +41,26 @@ public class T121_BestTimeToBuyAndSellStock {
         }
         return max;
     }
+
+    /**
+     * 对每日股票价格的求差，得到利润差数组，然后问题可以转化为
+     * 求数组连续序列最大和问题。总收益等于每天股票价格变化的总和。
+     * <p>
+     * 执行用时 :2 ms, 60.63%
+     * 内存消耗 :49.5 MB, 5.01%
+     *
+     * @see T53_MaximumSubarray
+     */
+    public int maxProfit1(int[] prices) {
+        if (prices == null || prices.length <= 1)
+            return 0;
+        int len = prices.length;
+        int diff, sum = 0, max = 0;
+        for (int i = 1; i < len; i++) {
+            diff = prices[i] - prices[i - 1];
+            sum = sum > 0 ? sum + diff : diff;
+            max = Math.max(max, sum);
+        }
+        return max;
+    }
 }
