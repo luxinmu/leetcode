@@ -54,4 +54,16 @@ public class T215_KthLargestElementInAnArray {
         //堆顶为第k大的数
         return (p = q.poll()) != null ? p : -1;
     }
+
+//    public int findKthLargest1(int[] nums, int k) {
+//        if (nums == null || nums.length < k)
+//            return -1;
+//        int index = qsort(nums, 0, nums.length - 1, k);
+//        return 0;
+//    }
+
+//    private int qsort(int[] nums, int left, int right, int k) {
+//        if (left < right)
+//            return left;
+//    }
 }
