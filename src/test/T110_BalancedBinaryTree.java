@@ -29,6 +29,10 @@ package test;
  *  4   4
  * Return false.
  */
+
+/**
+ * @see T104_MaximumDepthOfBinaryTree
+ */
 public class T110_BalancedBinaryTree {
     public static void main(String[] args) {
         T110_BalancedBinaryTree t110 = new T110_BalancedBinaryTree();
@@ -40,10 +44,11 @@ public class T110_BalancedBinaryTree {
         System.out.println(t110.isBalanced(tree2));
     }
 
-    /** 当如下三种情况，当前节点是高度平衡的:
-     *  1 root为空
-     *  2 root的左右子树都为空
-     *  3 root的左右子树高度差的绝对值小于等于1, 且左右子树也高度平衡。
+    /**
+     * 当如下三种情况，当前节点是高度平衡的:
+     * 1 root为空
+     * 2 root的左右子树都为空
+     * 3 root的左右子树高度差的绝对值小于等于1, 且左右子树也高度平衡。
      * 执行用时 :1 ms, 100.00%
      * 内存消耗 :39.1 MB, 34.48%
      */
