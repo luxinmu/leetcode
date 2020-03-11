@@ -27,6 +27,10 @@ import java.util.List;
  */
 public class T559_MaximumDepthOfN_aryTree {
 
+    /**
+     * 执行用时 :1 ms, 79.35%
+     * 内存消耗 :39.9 MB, 7.82%
+     */
     public int maxDepth(Node root) {
         if (root == null)
             return 0;
