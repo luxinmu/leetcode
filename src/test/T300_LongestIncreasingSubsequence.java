@@ -18,7 +18,9 @@ import java.util.Arrays;
  * Follow up: Could you improve it to O(n log n) time complexity?
  *
  * @see T3_LengthOfLongestSubstring
+ * @see T334_IncreasingTripletSubsequence
  * @see T354_RussianDollEnvelopes
+ * @see T673_NumberOfLongestIncreasingSubsequence
  */
 public class T300_LongestIncreasingSubsequence {
 
@@ -53,7 +55,7 @@ public class T300_LongestIncreasingSubsequence {
             for (int j = 0; j < i; j++) {
                 // 转移方程： 设 j∈[0,i)，考虑每轮计算新dp[i]时，遍历[0,i)列表区间，做以下判断：
                 // 1.当 nums[i]>nums[j]时： nums[i]可以接在nums[j] 之后（此题要求严格递增），
-                //  此情况下最长上升子序列长度为 dp[j]+1；
+                // 此情况下最长上升子序列长度为 dp[j]+1；
                 // 2.当 nums[i]<=nums[j]时：nums[i]无法接在nums[j] 之后，此情况上升子序列不成立，跳过。
                 // 上述所有 1.情况下计算出的dp[j]+1的最大值，j∈[0,i)。
                 // 转移方程： dp[i] = max(dp[i], dp[j] + 1) for j in [0, i)。
