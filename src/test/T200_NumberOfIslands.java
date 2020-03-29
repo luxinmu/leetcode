@@ -25,6 +25,7 @@ package test;
  * Output: 3
  *
  * @see T695_MaxAreaOfIsland
+ * @see T1162_AsFarFromLandAsPossible
  */
 public class T200_NumberOfIslands {
     public static void main(String[] args) {
@@ -47,11 +48,11 @@ public class T200_NumberOfIslands {
 
     int R;
     int C;
+    int[] dR = {1, 0, -1, 0};
+    int[] dC = {0, 1, 0, -1};
 
     /**
      * DFS解法
-     * 执行用时 :3 ms, 54.15%
-     * 内存消耗 :41.5 MB, 10.76%
      * 发现一块陆地，总数增加1，将该陆地和连接的陆地全部弄沉
      */
     public int numIslands(char[][] grid) {
@@ -70,7 +71,27 @@ public class T200_NumberOfIslands {
         return count;
     }
 
+    /**
+     * 利用增量数组简化代码
+     * 执行用时 :2 ms, 94.97%
+     * 内存消耗 :42.1 MB, 5.32%
+     */
     private void dfs(char[][] grid, int i, int j) {
+        grid[i][j] = '0';
+        for (int k = 0; k < 4; k++) {
+            int newR = i + dR[k];
+            int newC = j + dC[k];
+            if (newR < 0 || newR >= R || newC < 0 || newC >= C || grid[newR][newC] == '0')
+                continue;
+            dfs(grid, newR, newC);
+        }
+    }
+
+    /**
+     * 执行用时 :3 ms, 54.15%
+     * 内存消耗 :41.5 MB, 10.76%
+     */
+    private void dfs1(char[][] grid, int i, int j) {
         grid[i][j] = '0';
         if (i + 1 < R && grid[i + 1][j] == '1')
             dfs(grid, i + 1, j);
